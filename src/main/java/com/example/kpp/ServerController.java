@@ -11,7 +11,7 @@ public class ServerController {
 
         for(int i = 0; i < test.length(); i++)
             if(test.charAt(i) != test.charAt(test.length()-i-1)) {
-                return new RawData(test,test.length()-1,false);
+                return new RawData(test,test.length(),false);
                 //return "The word is: " + test + " - " + Integer.toString(test.length()) + " symbols" + "\nIt's not a polynom!";
             }
         return new RawData(test,test.length(),true);
