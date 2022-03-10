@@ -1,10 +1,15 @@
 package com.example.kpp.logic;
 
 
+import com.example.kpp.exceptionhandling.MyThrowable;
 
 public class polynom {
 
-    public static String[][] is_polynom(String test) {
+    public static String[][] is_polynom(String test) throws MyThrowable {
+        if (test.isEmpty())
+            throw new MyThrowable(400);
+        else if (test.equals("empty"))
+            throw new MyThrowable(399);
         String[][] reply = new String[3][2];
         reply[0][0] = "Word: ";
         reply[0][1] = test;
