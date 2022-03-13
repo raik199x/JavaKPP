@@ -12,8 +12,6 @@ public class Exceptions {
     public ResponseEntity<Object> exception(MyThrowable exception) {
         if (exception.status_code == 400)
             return new ResponseEntity<>("Empty line was send", HttpStatus.BAD_REQUEST);
-        else if (exception.status_code == 399)
-            return new ResponseEntity<>("Nothing was sent", HttpStatus.BAD_REQUEST);
         else
             return new ResponseEntity<>("Unexpected Error", HttpStatus.INTERNAL_SERVER_ERROR);
     }
