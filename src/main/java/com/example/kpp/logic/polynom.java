@@ -1,7 +1,10 @@
 package com.example.kpp.logic;
 
 import com.example.kpp.LoggingController;
+import com.example.kpp.cache.GetCache;
 import com.example.kpp.exceptionhandling.MyThrowable;
+
+import java.util.Objects;
 
 public class polynom {
 
@@ -13,6 +16,13 @@ public class polynom {
             throw new MyThrowable(400);
         }
         String[][] reply = new String[3][2];
+        //checking cache
+        reply = GetCache.Get(test);
+        if(!reply[0][0].equals("FALSE")) {
+            logger.log_info("Send info from cache");
+            return reply;
+        }
+
         reply[0][0] = "Word: ";
         reply[0][1] = test;
         reply[1][0] = "Size: ";
@@ -23,9 +33,11 @@ public class polynom {
         for (int i = 0; i < test.length(); i++)
             if (test.charAt(i) != test.charAt(test.length() - i - 1)) {
                 reply[2][1] = "false";
+                GetCache.Set(test,reply);
                 return reply;
             }
         reply[2][1] = "true";
+        GetCache.Set(test,reply);
         return reply;
     }
 
