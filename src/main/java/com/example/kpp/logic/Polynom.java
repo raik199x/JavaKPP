@@ -5,6 +5,7 @@ import org.slf4j.LoggerFactory;
 import com.example.kpp.cache.GetCache;
 import com.example.kpp.exceptionhandling.MyThrowable;
 
+
 public class Polynom {
 
     static Logger MyLogger = LoggerFactory.getLogger(Polynom.class);
@@ -15,12 +16,6 @@ public class Polynom {
             throw new MyThrowable(400);
         }
         String[][] reply = new String[3][2];
-        //checking cache
-        reply = GetCache.Get(test);
-        if(!reply[0][0].equals("FALSE")) {
-            MyLogger.info("Send info from cache");
-            return reply;
-        }
 
         reply[0][0] = "Word: ";
         reply[0][1] = test;
@@ -32,11 +27,9 @@ public class Polynom {
         for (int i = 0; i < test.length(); i++)
             if (test.charAt(i) != test.charAt(test.length() - i - 1)) {
                 reply[2][1] = "false";
-                GetCache.Set(test,reply);
                 return reply;
             }
         reply[2][1] = "true";
-        GetCache.Set(test,reply);
         return reply;
     }
 
