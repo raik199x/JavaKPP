@@ -23,4 +23,5 @@
 hs_err_pid*
 
 # etc
-.gitignore
+/target/
+/.idea/
