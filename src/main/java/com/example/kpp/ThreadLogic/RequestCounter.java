@@ -3,10 +3,10 @@ package com.example.kpp.ThreadLogic;
 public class RequestCounter {
     static int CountRequests = 0;
 
-    public static void IncCounter(){
+    public synchronized static void IncCounter(){
         CountRequests++;
     }
-    public static int AskCounter(){
+    public synchronized static int AskCounter(){
         return CountRequests;
     }
 }
